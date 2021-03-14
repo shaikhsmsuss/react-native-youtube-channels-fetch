@@ -4,33 +4,43 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Textinput,
+  TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-class SearchChannels extends Component {
+export default class SearchChannelsComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      search: '',
-    };
+    this.state = {};
   }
 
   onChange = textValue => {
-    this.setState({search: textValue});
+    console.log('tex', textValue);
+    this.props.setChannel(textValue);
+  };
+
+  onSearch = () => {
+    this.props.searchChannelsData();
   };
 
   render() {
     return (
       <View style={styles.search}>
-        <Textinput
+        <TextInput
           placeholder="search channels"
           style={styles.input}
           onChangeText={this.onChange}
+          underlineColorAndroid="transparent"
         />
         <TouchableOpacity>
-          <Icon name="search" size={20} color="#fff" onPress={this.onSearch} />
+          <Icon
+            name="search"
+            size={35}
+            color="#AAAAAA"
+            style={styles.icon}
+            onPress={this.onSearch}
+          />
         </TouchableOpacity>
       </View>
     );
@@ -40,12 +50,13 @@ class SearchChannels extends Component {
 const styles = StyleSheet.create({
   search: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#181818',
   },
   input: {
-    height: 60,
-    padding: 8,
-    fontSize: 18,
+    height: 50,
+    width: 350,
+    color: '#AAAAAA',
   },
 });
-
-export default SearchChannels;

@@ -37,13 +37,13 @@ class Channels extends Component {
 const styles = StyleSheet.create({
   listitem: {
     padding: 15,
-    backgroundColor: '#282828',
+    backgroundColor: '#212121',
     borderBottomWidth: 1,
     borderColor: '#404040',
   },
   thumbnail: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 100 / 2,
     marginLeft: 10,
   },
@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   listItemText: {
-    margin: 24,
     fontSize: 18,
     textAlign: 'center',
     color: '#fff',
     width: '50%',
+    margin: 30,
   },
 });
 
