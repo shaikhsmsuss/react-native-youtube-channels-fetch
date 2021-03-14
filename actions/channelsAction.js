@@ -7,7 +7,7 @@ import {
 } from './types';
 
 export const getChannelsData = searchChannel => async dispatch => {
-  let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1000&q=${searchChannel}&type=channel&key=AIzaSyAWhRxYRwLglAeeERivHTLyHfIiYAHtw70`;
+  let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1000&q=${searchChannel}&type=channel&key=[youtube_api_key]`;
   try {
     const res = await axios.get(url);
     console.log('get new data', res.data);
