@@ -1,11 +1,11 @@
 # react-native-youtube-channels-fetch
-A React Native app to fetch YouTube channels using Redux.
+A react-native app to fetch channels data from youtube using YOUTUBE API DATA V3 using redux
 
-### A react-native app to fetch channels data from youtube using YOUTUBE API DATA V3 using redux.
+
 
 ## Installation Instruction 
 
-# Clone the repository 
+
 1. clone the repository go to the root directory and run command `npm install`
 
 2. generate the youtube api key from console.developers.google.com
