@@ -4,7 +4,7 @@ A react-native app to fetch channels data from youtube using YOUTUBE API DATA V3
 
 
 ## Installation Instruction 
-
+install react-native cli
 
 1. clone the repository go to the root directory and run command `npm install`
 
