@@ -24,4 +24,6 @@ install react-native cli
 
 9. type channel name in input field and hit search icon it will show the related search data.
 
-10. click on any channel it will open the `YouTube` app with the selected channel data.
+10.also implment infinite scroll/lazy scroll on every scroll it will fetch the new data.
+
+11. click on any channel it will open the `YouTube` app with the selected channel data.
