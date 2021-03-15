@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
 
 import {connect} from 'react-redux';
 
@@ -14,20 +21,15 @@ class App extends Component {
 
     this.state = {
       items: [],
-      search: '',
+      search: 'react native',
     };
   }
 
-  // componentDidMount() {
-  //   let data = {
-  //     searchChannel: 'react.js',
-  //   };
-  //   this.props.getChannelsData(data);
-  //   console.log('this.props', this.props.channels);
-  // }
+  async componentDidMount() {
+    await this.props.getChannelsData(this.state.search);
+  }
 
   setChannel = data => {
-    console.log('data', data);
     this.setState({search: data});
   };
 
@@ -53,7 +55,8 @@ class App extends Component {
   };
 
   render() {
-    console.log('state', this.state.items);
+    let {loading} = this.props.channels;
+
     return (
       <View style={styles.container}>
         <Header />
@@ -61,13 +64,25 @@ class App extends Component {
           setChannel={this.setChannel}
           searchChannelsData={this.searchChannelsData}
         />
-        <FlatList
-          data={this.state.items}
-          renderItem={({item}) => <Channels item={item} />}
-          keyExtractor={(item, index) => String(index)}
-          onEndReached={this.handleLoadMore}
-          onEndReachedThreshold={0}
-        />
+        {loading ? (
+          <View style={styles.indicator}>
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
+        ) : this.props.channels.channels ? (
+          <View>
+            <FlatList
+              data={this.state.items}
+              renderItem={({item}) => <Channels item={item} />}
+              keyExtractor={(item, index) => String(index)}
+              onEndReached={this.handleLoadMore}
+              onEndReachedThreshold={0.3}
+            />
+          </View>
+        ) : (
+          <View>
+            <Text>Oops!!! Something went wrong</Text>
+          </View>
+        )}
       </View>
     );
   }
@@ -77,6 +92,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#282828',
+  },
+  indicator: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    opacity: 0.5,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  result: {
+    color: '#AAAAAA',
   },
 });
 

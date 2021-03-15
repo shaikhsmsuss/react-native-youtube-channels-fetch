@@ -7,16 +7,15 @@ import {
   TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-
+import RemoveIcon from 'react-native-vector-icons/dist/AntDesign';
 export default class SearchChannelsComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.myTextInput = React.createRef();
   }
 
   onChange = textValue => {
-    console.log('tex', textValue);
     this.props.setChannel(textValue);
   };
 
@@ -24,15 +23,29 @@ export default class SearchChannelsComponent extends Component {
     this.props.searchChannelsData();
   };
 
+  clearInput = () => {
+    this.myTextInput.current.clear();
+  };
+
   render() {
     return (
       <View style={styles.search}>
         <TextInput
-          placeholder="search channels"
+          placeholder="Search YouTube Channels..."
           style={styles.input}
           onChangeText={this.onChange}
-          underlineColorAndroid="transparent"
+          placeholderTextColor="#AAAAAA"
+          ref={this.myTextInput}
         />
+        <TouchableOpacity>
+          <RemoveIcon
+            name="close"
+            size={25}
+            color="#AAAAAA"
+            style={styles.closeButton}
+            onPress={this.clearInput}
+          />
+        </TouchableOpacity>
         <TouchableOpacity>
           <Icon
             name="search"
@@ -56,7 +69,12 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    width: 350,
+    width: '79%',
     color: '#AAAAAA',
+  },
+  closeButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
   },
 });

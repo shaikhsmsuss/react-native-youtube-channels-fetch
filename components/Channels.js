@@ -7,6 +7,7 @@ import {
   Image,
   Linking,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 class Channels extends Component {
   onPress = id => {
@@ -14,12 +15,14 @@ class Channels extends Component {
       console.log('errr', error);
     });
   };
+
   render() {
     let channelId = this.props.item.id.channelId;
     return (
       <TouchableOpacity
         style={styles.listitem}
-        onPress={() => this.onPress(channelId)}>
+        onPress={() => this.onPress(channelId)}
+        keyboardShouldPersistTaps={'handled'}>
         <View style={styles.llistViewItem}>
           <Image
             style={styles.thumbnail}
@@ -28,6 +31,7 @@ class Channels extends Component {
           <Text style={styles.listItemText}>
             {this.props.item.snippet.title}
           </Text>
+          <Icon name="angle-right" size={25} color="#AAAAAA" />
         </View>
       </TouchableOpacity>
     );
@@ -45,7 +49,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 100 / 2,
-    marginLeft: 10,
   },
   llistViewItem: {
     flexDirection: 'row',

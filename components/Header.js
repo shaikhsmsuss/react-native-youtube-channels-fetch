@@ -9,8 +9,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-//https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&q=travel&type=channel&key=AIzaSyAWhRxYRwLglAeeERivHTLyHfIiYAHtw70
-
 class Header extends Component {
   render() {
     return (
@@ -19,7 +17,7 @@ class Header extends Component {
           style={styles.iconStyle}
           source={require('../Collections.png')}
         />
-        <Text style={styles.text}>Channels</Text>
+        <Text style={styles.text}>YouTube Channels</Text>
       </View>
     );
   }
@@ -28,8 +26,8 @@ class Header extends Component {
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
-    height: 60,
-    padding: 15,
+    height: 70,
+    padding: 11,
     backgroundColor: '#3D3D3D',
     alignItems: 'center',
   },
